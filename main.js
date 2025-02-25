@@ -64,20 +64,21 @@ d3.csv("weather.csv").then(data => {
     // 5.a ADD AXES FOR CHART 1
     svgTemp.append("g")
         .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(xScale).tickFormat(d3.timeFormat("%m/%d/%y")));
-
-    svgTemp.append("g")
-        .call(d3.axisLeft(yScale));
+        .call(d3.axisBottom(xScale)
+            .ticks(d3.timeMonth.every(2))
+            .tickFormat(d3.timeFormat("%b %Y"))
+        );
 
     // 6.a: ADD LABELS FOR CHART 1
     svgTemp.append("text")
         .attr("class", "title")
         .attr("x", width / 2)
         .attr("y", -margin.top / 2)
-        .text("Average Temperature Over Time by City")
+        .text("Tracking Temperature Shifts in Major Cities Over Time (July 2014-2015)") 
         .attr("text-anchor", "middle")
         .style("font-size", "16px")
         .style("font-weight", "bold");
+
 
     svgTemp.append("text")
         .attr("class", "axis-label")
