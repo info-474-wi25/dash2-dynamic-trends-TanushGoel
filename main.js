@@ -1,5 +1,5 @@
 // 1: SET GLOBAL VARIABLES
-const margin = { top: 50, right: 30, bottom: 60, left: 70 };
+const margin = { top: 20, right: 30, bottom: 60, left: 70 };
 const width = 900 - margin.left - margin.right;
 const height = 400 - margin.top - margin.bottom;
 
@@ -69,16 +69,11 @@ d3.csv("weather.csv").then(data => {
             .tickFormat(d3.timeFormat("%b %Y"))
         );
 
-    // 6.a: ADD LABELS FOR CHART 1
-    svgTemp.append("text")
-        .attr("class", "title")
-        .attr("x", width / 2)
-        .attr("y", -margin.top / 2)
-        .text("Tracking Temperature Shifts in Major Cities Over Time (July 2014-2015)") 
-        .attr("text-anchor", "middle")
-        .style("font-size", "16px")
-        .style("font-weight", "bold");
+    svgTemp.append("g")
+      .call(d3.axisLeft(yScale))
+      .attr("class", "y-axis");
 
+    // 6.a: ADD LABELS FOR CHART 1
 
     svgTemp.append("text")
         .attr("class", "axis-label")
@@ -105,7 +100,7 @@ d3.csv("weather.csv").then(data => {
         const legendEnter = legend.enter() // add new
             .append("g")
             .attr("class", "legend")
-            .attr("transform", (d, i) => `translate(${width - 120}, ${i * 20 + 165})`);
+            .attr("transform", (d, i) => `translate(${width - 120}, ${i * 20 + 195})`);
 
         legendEnter.append("rect")
             .attr("x", 10)
@@ -120,7 +115,7 @@ d3.csv("weather.csv").then(data => {
             .style("alignment-baseline", "middle")
             .text(d => d[0]);
 
-        legend.attr("transform", (d, i) => `translate(${width - 120}, ${i * 20 + 165})`); // update positions
+        legend.attr("transform", (d, i) => `translate(${width - 120}, ${i * 20 + 195})`); // update positions
     }
 
     updateLegend(Array.from(cityData)); // initial legend
