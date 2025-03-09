@@ -131,7 +131,11 @@ a:hover {
 
     .horizontal-container .item:last-child {
         margin-bottom: 0;
-    }
+    } 
+}
+
+.horizontal-container h3 {
+    padding-bottom: 10px;
 }
 
 #citySelect {
