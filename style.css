@@ -134,4 +134,19 @@ a:hover {
     }
 }
 
+#citySelect {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    width: 200px; 
+}
+
+#citySelect option {
+    padding: 5px;
+}
+
 /* CSS generated with assistance from ChatGPT and DeepSeek. */
